@@ -4,9 +4,6 @@
 <div class="card border-0 shadow-sm rounded-4 mt-3">
     <div class="card-header bg-white d-flex justify-content-between pt-4 px-4">
         <h5 class="fw-bold text-dark"><i class="bi bi-person-badge text-primary me-2"></i>Data Mahasiswa</h5>
-        <button class="btn btn-primary rounded-pill shadow-sm" data-bs-toggle="modal" data-bs-target="#addMahasiswaModal">
-            <i class="bi bi-plus-circle me-1"></i> Tambah Mahasiswa
-        </button>
     </div>
 
     <div class="card-body p-4">
@@ -70,41 +67,5 @@
             </table>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="addMahasiswaModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4 border-0 shadow">
-        <form action="{{ route('mahasiswa.store') }}" method="POST">
-            @csrf
-            <div class="modal-header border-bottom-0 pb-0"><h5 class="modal-title fw-bold">Tambah Mahasiswa</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label class="small text-muted fw-bold">NIM (Akan jadi Username)</label>
-                    <input type="text" name="nim" class="form-control rounded-3" placeholder="Contoh: 23552011373" required>
-                </div>
-                <div class="mb-3">
-                    <label class="small text-muted fw-bold">Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control rounded-3" placeholder="Nama Mahasiswa" required>
-                </div>
-                <div class="mb-3">
-                    <label class="small text-muted fw-bold">Pilih Jurusan</label>
-                    <select name="id_jurusan" class="form-select rounded-3" required>
-                        <option value="" disabled selected>-- Pilih Jurusan --</option>
-                        @foreach(\App\Models\Jurusan::all() as $j)
-                            <option value="{{ $j->id_jurusan }}">{{ $j->nama_jurusan }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="small text-muted fw-bold">Password Login</label>
-                    <input type="text" name="password" class="form-control rounded-3" placeholder="Password untuk login" required>
-                </div>
-            </div>
-            <div class="modal-footer border-top-0 pt-0">
-                <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-primary rounded-pill px-4">Simpan Data</button>
-            </div>
-        </form>
-    </div></div>
 </div>
 @endsection
